@@ -1,0 +1,90 @@
+{% extends 'layout' %}
+
+{% block content %}
+  <title>Event registration</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <br><br><br>
+
+  <div class="">
+
+    <div class="col-lg-6">
+      <form action="/registration_complete/{{ eventid }}" method="post" style="margin-left:100px;padding:30px">
+
+        <div class="form-group">
+          <label for="">
+            NAME
+          </label>
+          <input type="text" name="name" class="form-control" style="width:300px;" placeholder="Your full name">
+        </div>
+
+        <div class="form-group">
+          <label for="">
+            EMAIL</label>
+          <input type="email" name="email" class="form-control" style="width:300px;" placeholder="Email">
+        </div>
+
+        <div class="form-group">
+          <label for="">
+            MOBILE NO
+          </label>
+          <input type="tel" name="mobile" class="form-control" style="width:300px;" placeholder="Mobile no">
+        </div>
+
+        <div class="form-group">
+          <label for="">DESCRIPTION</label>
+          <textarea type="text" name="description" class="form-control" style="width:300px;height:100px;" placeholder="Description"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+
+    <div class="col-lg-6">
+      <br><br>
+      <h3>
+        {{ events.event_name}}
+      </h3><br>
+      <br>
+      <script type="text/javascript">
+        var monthNames = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December"
+        ];
+        var d = {{ events.start_date.getDate() }};
+        var m = {{ events.start_date.getMonth() }};
+        var m2 = monthNames[m];
+        var y = {{ events.start_date.getFullYear() }};
+        document.write(`Start At : ${d} ${m2} ${y} `);
+
+        var d2 = {{ events.end_date.getDate() }};
+        var m3 = {{ events.end_date.getMonth() }};
+        var m4 = monthNames[m];
+        var y2 = {{ events.end_date.getFullYear() }};
+      </script>
+      <br><br>
+      <script type="text/javascript">
+        document.write(`Ends At : ${d2} ${m4} ${y2}`);
+      </script>
+      <br><br>
+      <p>{{ events.event_description }}</p>
+    </div>
+
+  </div>
+
+  {% for message in old('message') %}
+    <script type="text/javascript">
+      alert('{{ message }}')
+    </script>
+  {% endfor %}
+
+{% endblock %}

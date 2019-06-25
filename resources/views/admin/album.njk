@@ -1,0 +1,63 @@
+{% extends 'admin.layout' %}
+{% block content %}
+  <br>
+  <h1 style="" class="text-center">
+    {{gallery.description}}</h1>
+  {% if gallery.happens | length %}
+    <p class="text-center">(It is recurring type)</p>
+    <p class="text-center">
+      <b>Last happened:</b>
+      {{ gallery.happens}}</p>
+  {% endif %}
+
+  {% if gallery.happens | length === 0 %}
+    <p class="text-center">(It happens once)</p>
+    <p class="text-center">
+      <b>Start date:</b>
+      {{ gallery.start_date.getDate() }}/{{ gallery.start_date.getMonth() }}/{{ gallery.start_date.getFullYear() }}</p>
+    <p class="text-center">
+      <b>End date:</b>
+      {{ gallery.end_date.getDate() }}/{{ gallery.end_date.getMonth() }}/{{ gallery.end_date.getFullYear() }}</p>
+
+  {% endif %}
+
+  <div class="" style="margin-left:100px;width:300px;background-color:gray;padding:20px">
+    <h1>Add albums</h1>
+    <form class="" action="/createalbum/{{ gallery_id }}" style="padding:20px;" method="post" enctype="multipart/form-data"><br><br>
+      <input type="file" name="albumpic" value=""><br>
+      <input type="submit" name="" value="submit">
+    </form>
+  </div>
+
+  {% for album in gallery.albums %}
+    <div class="" style="display: inline-block; padding: 10px; margin-left: 10px;">
+      <img src="../{{ album.album_pic }}" class="scale" height="200px" width="200px">
+      <br><br>
+      <script type="text/javascript">
+        var monthNames = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December"
+        ];
+        var d = new Date('{{ album.created_at }}');
+        document.write(`${d.getDate()} ${monthNames[d.getMonth()]} ${d.getFullYear()}`);
+      </script>
+    </div>
+  {% endfor %}
+
+  {% for message in old('message') %}
+    <script type="text/javascript">
+      alert('{{ message }}')
+    </script>
+  {% endfor %}
+
+{% endblock %}

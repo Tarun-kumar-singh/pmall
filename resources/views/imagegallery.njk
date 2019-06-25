@@ -1,0 +1,45 @@
+{% extends 'layout' %}
+
+{% block content %}
+
+  <!--midd-->
+  <section class="shopmidd-wrap" id="middbody">
+    <br><br>
+    <div class="bredcrum">
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        &raquo;
+        <li>Gallery</li>
+      </ul>
+    </div>
+    <h1>gallery</h1>
+
+    <div class="picture-gallery">
+      <h2 class="gallery-subhead">Pictures</h2>
+
+      <div class="picture-gallery-list">
+        <ul>
+          {% for galleryItem in gallery %}
+            <li>
+              <div class="listimg">
+                <div class="productview second-effect" style="float:left">
+                  <img src="../{{ galleryItem.cover_Pic }}" class="scale">
+                  <div class="mask"></div>
+                  <div class="content">
+                    <a href="displayalbum/{{ galleryItem.id }}" class="info">Click to view more</a>
+                  </div>
+                </div>
+              </div>
+              <div class="caption-head">{{ galleryItem.description }}
+                <span>{{ galleryItem.created_at}}</span></div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+{% endblock %}

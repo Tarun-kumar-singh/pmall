@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <meta name="description" content="Phoenix Mall is one of the best shopping malls in Bareilly that houses an expansive number of fashion stores for women, men and kids.">
+  <meta name="keywords" content="bareilly shopping malls, best phonix malls in bareilly, fashion stores for women, bareilly phoenix mall, hypermarket in bareilly "/>
+
+  <link rel="canonical" href="index.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/x-icon" href="../images/icon.ico">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../js/css3mediaquery.js"></script>
+  <link href="../css/phoenix.css" rel="stylesheet" type="text/css"/>
+  <link href="../css/media.css" rel="stylesheet" type="text/css"/>
+
+  <link href="../css/flexslider.css" rel="stylesheet" type="text/css"/>
+  <script defer="defer" src="../js/jquery.flexslider.js"></script>
+  <script>
+    $(window).load(function () {
+      $('.flexslider').flexslider({
+        animation: "swing",
+        controlNav: true,
+        start: function (slider) {
+          $('body').removeClass('loading');
+        }
+      });
+      $('.flexslider-mobile').flexslider({
+        animation: "swing",
+        controlNav: true,
+        start: function (slider) {
+          $('body').removeClass('loading');
+        }
+      });
+    });
+  </script>
+
+  <!-- slider -->
+  <script type="text/javascript" src="../js/sim.js"></script>
+
+</head>
+<body>
+
+  {% include 'header' %}
+
+  {% block content %}{% endblock %}
+
+  {% for error in old('errors') %}
+    <script type="text/javascript">
+      alert('{{ error }}')
+    </script>
+  {% endfor %}
+
+  {% for success in old('success') %}
+    <script type="text/javascript">
+      alert('{{ success }}')
+    </script>
+  {% endfor %}
+
+  {% include 'footer' %}
+
+  {% block js %}{% endblock %}
+
+</body>
+</html>

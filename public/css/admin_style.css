@@ -1,0 +1,99 @@
+﻿@charset "utf-8";
+* { margin:0px; padding:0px; }
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block; }
+ol,ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}
+table{border-collapse:collapse;border-spacing:0}
+body { background:#def3d6; font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px; font-weight:normal; font-style:normal; font-stretch:normal; line-height:normal; letter-spacing:normal; word-spacing:normal; line-height:1; -webkit-text-size-adjust:none }
+
+#mainwarpar { width:980px; margin:0px auto; }
+.mainwarpar { width:100%; height:auto; float:left; background:#FFF; }
+
+
+/* ################################# header ################################# */
+.header {  position:relative;z-index:998; width:96%; padding:5px 2% 5px 2%; float:right; height:76px; background:#FFF; -webkit-box-shadow:0px 5px 12px -5px rgba(0,0,0,0.60); -moz-box-shadow:0px 5px 12px -5px rgba(0,0,0,0.60); box-shadow:0px 5px 12px -5px rgba(0,0,0,0.60); }
+.logo { width:265px; height:auto; float:left; margin-top:12px;     margin-left: -19px;}
+.logout { background:#434343; width:auto; height:auto; float:right; padding:6px 15px 6px 15px; margin:25px 0px 0px 0px; border:none; cursor:pointer; line-height:20px; font-size:14px; color:#fff;  text-align:center;text-transform:uppercase; text-decoration:none; border-radius:2px; 
+-ms-transition:all 0.5s ease; -webkit-transition:all 0.5s ease; -moz-transition:all 0.5s ease; -o-transition:all 0.5s ease; transition:all 0.5s ease; }
+.logout:hover { background:#e32127; -ms-transition:all 0.5s ease; -webkit-transition:all 0.5s ease; -moz-transition:all 0.5s ease; -o-transition:all 0.5s ease; transition:all 0.5s ease; }
+
+/* ################################# footer ################################# */
+.footer { width:100%; height:auto; float:left;  padding:15px 0px 12px 0px;  background:#282828; text-align:center; line-height:20px; font-size:12px; color:#fff; }
+
+
+/* ################################# WHERE TO BUY ################################# */
+.landingPage { height:auto; float:left; width:96%; padding:0px; margin:30px 2% 30px 2%; }
+.landingPage.list { margin:50px 2% 30px 2%; }
+.landingPageForm { width:100%; float:left; margin:35px 0px 50px 0px; }
+.landingPageForm h1 { width:65%; float:left; margin:10px 0px 20px 35%; padding:0px; line-height:24px; font-size:24px; color:#424242; text-align:left; }
+.landingPageForm h2 { width:100%; float:left; margin:0px; padding:0px; height:20px; }
+.landingPageForm h6 { width:65%; float:left; margin:10px 0px 0px 35%; padding:0px; line-height:18px; font-size:12px; color:#ff4b46; text-align:left; }
+.landingPageForm p { width:30%; float:left; margin:0px 5% 0px 0px; padding:0px; line-height:30px; font-size:16px; color:#424242; text-align:right; }
+.landingPageForm select.lpf_select::-ms-expand { display: none; }
+.landingPageForm .lpf_select {  width:280px; height:40px; float:left; margin:0px; border:solid 1px #666; line-height:26px; font-size:14px; text-indent:5px; color:#747474;   text-align:left; background:#fff url(../images/selectIcon.png) no-repeat scroll right top; cursor:pointer; text-overflow: ''; appearance:none; -webkit-appearance: none; -moz-appearance: none; -ms-appearance: none; -o-appearance: none; @media (-webkit-min-device-pixel-ratio: 2),; }
+.landingPageForm .lpf_input {  width:280px; height:40px; float:left; margin:0px; border:solid 1px #666; line-height:26px; font-size:15px; text-indent:10px; color:#747474;  text-align:left; background:#fff; }
+
+.landingPageForm .lpf_input.noborder { border:none; margin-left: -10px;}
+.landingPageForm .lpf_input.txtdetails { height:60px;}
+
+.landingPageForm .lpf_submit { background:#434343; width:140px; height:auto; float:left; padding:8px 30px 6px 30px; float:left;  border:none; cursor:pointer; font-size:16px; color:#fff;  text-align:center;text-transform:uppercase; border-radius:2px; 
+-ms-transition:all 0.5s ease; -webkit-transition:all 0.5s ease; -moz-transition:all 0.5s ease; -o-transition:all 0.5s ease; transition:all 0.5s ease; }
+.landingPageForm .lpf_submit:hover { background:#e32127; -ms-transition:all 0.5s ease; -webkit-transition:all 0.5s ease; -moz-transition:all 0.5s ease; -o-transition:all 0.5s ease; transition:all 0.5s ease; }
+
+.landingPageData { width:100%; float:left;  }
+.landingPageData .lpd_exlDown { background:#434343; width:auto; height:auto; float:right; margin:0px 0px 10px 0px; padding:8px 30px 9px 30px; border:none; cursor:pointer; font-size:16px; color:#fff;  text-align:center;text-transform:uppercase; border-radius:2px; 
+-ms-transition:all 0.5s ease; -webkit-transition:all 0.5s ease; -moz-transition:all 0.5s ease; -o-transition:all 0.5s ease; transition:all 0.5s ease; }
+.landingPageData .lpd_exlDown:hover { background:#e32127; -ms-transition:all 0.5s ease; -webkit-transition:all 0.5s ease; -moz-transition:all 0.5s ease; -o-transition:all 0.5s ease; transition:all 0.5s ease; }
+.landingPageData table { width:100%; float:left; border:solid 1px #eee !important; border-collapse:collapse; }
+.landingPageData table tr:nth-child(odd) { background:#eee !important;  }
+.landingPageData table tr:nth-child(even) {background:#FFF !important; }
+.landingPageData th, .landingPageData td { background:none !important; border:1px solid #dedede !important; padding:10px 3px 5px 7px; text-align:left; vertical-align:middle; line-height:20px; font-size:14px; color:#424242; }
+.landingPageData th { background:#e32127 !important; color:#fff; }
+
+.landingPageData table tr td table { background:FFF !important; width:auto !important; float:right; border:none !important; border-collapse:separate !important; }
+.landingPageData table tr td table tr { background:FFF !important; }
+.landingPageData table tr td table td { background:#FFF !important; border:none  !important; padding:0px !important; }
+.landingPageData table tr td table td a { background:#ddd; float:left; border:solid 1px #343434; padding:3px 5px 3px 5px;  margin:5px; text-align:center; line-height:16px; font-size:14px; color:#424242; text-decoration:none; } 
+.landingPageData table tr td table td span { background:#f30; float:left; border:solid 1px #343434; padding:3px 5px 3px 5px;  margin:5px; text-align:center; line-height:16px; font-size:14px; color:#fff; text-decoration:none; } 
+
+
+
+#chkassign{width:400px; height:400px; overflow:scroll;  display:block; float:left}
+#chkassign td{ padding:10px;}
+#chkassign label{ padding-left:5px;}
+
+
+#chkupdateDiv{ float:left}
+#chkupdate{width:400px; height:400px; overflow:scroll;  display:block; float:left}
+#chkupdate td{ padding:10px;}
+#chkupdate label{ padding-left:5px;}
+
+#btnAssign{ margin-top:10px;}
+#btnupdate{ margin-top:10px;}
+
+.landingPageForm #GridView1 {border-collapse:inherit !important; border:#ccc solid 1px;}
+.landingPageForm table.classForm td.classForm {border-collapse:inherit !important; border:#ccc solid 1px; padding:5px;}
+.landingPageForm .text-center{border-collapse:inherit !important; border:#ccc solid 1px; padding:5px;}
+
+
+
+#uploadimagelarge { float: left; width: 120px;}
+#uplodimage { border: none; margin-left: 319px; margin-top: 20px; padding-left:10px;}
+#uplodimagesmall{ border: none; margin-left: 319px; margin-top: 20px;padding-left:10px;}
+#imgsmall{ float: left; width: 180px; height:70px;}
+.uploadimagelargeDiv { float: left; width: 332px;}
+.uplodimage{border: none; margin-left:-10px !important; margin-top:0 !important;}
+.Chkdel2 { clear: both; float: left; margin-left: 328px; margin-top: -20px;}
+.help{ text-indent:inherit !important}
+
+
+.paddingh6{ float:left; padding-left:5px;}
+.paddingh6 a{ color:#ff0000; text-decoration:underline;}
+.paddingh6 a:hover{ text-decoration:none;}
+
+
+
+a.edit{color:#ff0000; text-decoration:underline;}
+a.edit:hover{ text-decoration:none;}

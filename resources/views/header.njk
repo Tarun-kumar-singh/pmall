@@ -1,0 +1,147 @@
+<style>
+  a,
+  a:focus,
+  a:hover,
+  a:visited {
+    text-decoration: none;
+  }
+</style>
+
+<header>
+  <div class="phoenix-logo">
+    <a href="/" style="position: relative;top: -5px;"><img src="../images/bareilly-web-logo.png" alt="PHOENIX MALL" class="scale"></a>
+  </div>
+
+  <nav>
+    <ul style="max-width:100%;">
+      <li>
+        <a class="" href="/" id="UCTopband1_homeP">HOME</a>
+      </li>
+      <li>
+        <a href="/shop" id="UCTopband1_shopP">SHOP</a>
+      </li>
+      <li>
+        <a href="/food" id="UCTopband1_foodP">FOOD</a>
+      </li>
+      <li>
+        <a href="/entertainment" id="UCTopband1_entertainmentP">ENTERTAINMENT</a>
+      </li>
+      <li>
+        <a href="/event" id="UCTopband1_eventsP">EVENTS</a>
+      </li>
+      <li>
+        <a href="/offer" id="UCTopband1_offersP">OFFERS</a>
+      </li>
+      <li>
+        <a href="/services" id="UCTopband1_servicesP">SERVICES</a>
+      </li>
+      <li>
+        <a href="/otherlocations" id="UCTopband1_otherLoc">OTHER LOCATIONS</a>
+      </li>
+
+    </ul>
+  </nav>
+  <div class="clr"></div>
+
+  <aside class="mob-nav">
+    <a href="#"><img src="../images/mobile-menu.png" id="show-icon"></a>
+    <a href="javascript://"><img src="../images/close-btn.png" id="hide-icon" style="display:none;" alt=""/></a>
+    <div class="mob-menu">
+      <ul>
+        <li>
+          <a href='/'>HOME</a>
+        </li>
+        <li>
+          <a href='/shop'>SHOP</a>
+        </li>
+        <li>
+          <a href='/food'>FOOD</a>
+        </li>
+        <li>
+          <a href='/entertainment'>ENTERTAINMENT</a>
+        </li>
+        <li>
+          <a href='/event'>EVENTS</a>
+        </li>
+        <li>
+          <a href='/offer'>OFFERS</a>
+        </li>
+        <li>
+          <a href='/services'>SERVICES</a>
+        </li>
+        <li>
+          <a href='/otherlocations'>OTHER LOCATIONS</a>
+        </li>
+
+      </li>
+    </ul>
+  </div>
+</aside>
+</header>
+
+{% block js %}
+{# To highlight active page #}
+
+<!--Mobile DropDown -->
+<script>
+  $(document).ready(function () {
+    $(".mob-nav").click(function () {
+      $(".mob-menu").slideToggle("500");
+
+    });
+    $("#show-icon").click(function () {
+      $(this).hide();
+      $("#hide-icon").show();
+    });
+    $("#hide-icon").click(function () {
+      $(this).hide();
+      $("#show-icon").show();
+    });
+
+    //New mobile js
+    $(".mob-nav-other").click(function () {
+      $(".mob-menu-rgt").slideToggle("500");
+
+    });
+    $("#show-icon-rgt").click(function () {
+      $(this).hide();
+      $("#hide-icon-rgt").show();
+    });
+    $("#hide-icon-rgt").click(function () {
+      $(this).hide();
+      $("#show-icon-rgt").show();
+    });
+
+  });
+</script>
+
+<script type="text/javascript">
+
+  var currenturl = window.location.href;
+
+  if (currenturl === 'http://localhost:3333/') {
+    document.getElementById("UCTopband1_homeP").classList.add('active');
+  } else if (currenturl === 'http://localhost:3333/shop') {
+    document.getElementById("UCTopband1_shopP").classList.add('active');
+
+  } else if (currenturl === 'http://localhost:3333/food') {
+    document.getElementById("UCTopband1_foodP").classList.add('active');
+
+  } else if (currenturl === 'http://localhost:3333/entertainment') {
+    document.getElementById("UCTopband1_entertainmentP").classList.add('active');
+
+  } else if (currenturl === 'http://localhost:3333/event') {
+    document.getElementById("UCTopband1_eventsP").classList.add('active');
+
+  } else if (currenturl === 'http://localhost:3333/offer') {
+    document.getElementById("UCTopband1_offersP").classList.add('active');
+
+  } else if (currenturl === 'http://localhost:3333/services') {
+    document.getElementById("UCTopband1_servicesP").classList.add('active');
+
+  } else if (currenturl === 'http://localhost:3333/otherlocations') {
+    document.getElementById("UCTopband1_otherLoc").classList.add('active');
+
+  }
+</script>
+{% endblock %}

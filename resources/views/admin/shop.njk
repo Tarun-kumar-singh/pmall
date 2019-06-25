@@ -1,0 +1,132 @@
+{% extends 'admin.layout' %}
+
+{% block content %}
+  <title>Shops</title>
+
+  <form style="margin-left:100px" action="/shop" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="">Brand Name</label>
+      <input type="text" class="form-control" style="width:300px;" name="brandname" placeholder="Enter brand name" required="required">
+    </div>
+
+    <div class="form-group">
+      <label for="date">category</label>
+      <select class="form-control" name="brandcategory" style="width:300px;" placeholder="Category" required="required">
+
+        <option value="apparel">Apparel</option>
+        <option value="cafes">Cafes &amp; Restaurant</option>
+        <option value="cosmetics">Cosmetics</option>
+        <option value="electronics">Electronics</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="foodcourt">Food Court</option>
+        <option value="footwear">Footwear, Bags &amp; Accessories</option>
+        <option value="gifts">Gifts</option>
+        <option value="lifestyle">Home &amp; Lifestyle</option>
+        <option value="hypermarket">Hypermarket</option>
+        <option value="fashion">Internantional fashion</option>
+        <option value="kids">Kids &amp; Infant care</option>
+        <option value="lingerie">Lingerie</option>
+        <option value="menfashion">Men Fashion</option>
+        <option value="sportswear">Sports wear</option>
+        <option value="watches">Watches</option>
+        <option value="ethnicwear">Women Ethnic Wear</option>
+
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="">Floor Number</label>
+      <select name="ddlFloor" id="ddlFloor" class="filterbox_select" required="required">
+        <option value="-1">Basement</option>
+        <option value="0">Ground Floor</option>
+        <option value="1">First Floor</option>
+        <option value="2">Second Floor</option>
+        <option value="3">Third Floor</option>
+        <option value="4">Fourth Floor</option>
+        <option value="5">Food Court</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="">Shop Number</label>
+      <input type="number" class="form-control" name="shopnumber" style="width:90px;" placeholder="Shop no" required="required">
+    </div>
+
+    <div class="form-group">
+      <label for="">Brand Description</label>
+      <textarea type="text" class="form-control" style="width:300px;height:200px" name="branddescription" placeholder=" brand description" required="required"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="">Upload shop image</label>
+      <input type="file" class="form-control-file" name="brandpic" required="required">
+    </div>
+
+    <div class="form-group">
+      <label for="">Upload shop logo</label>
+      <input type="file" class="form-control-file" name="shoplogo" required="required">
+    </div>
+
+    <div class="form-group">
+      <label for="">Open time</label>
+      <input type="time" class="form-control-file" name="opentime" required="required">
+    </div>
+
+    <div class="form-group">
+      <label for="">Close time</label>
+      <input type="time" class="form-control-file" name="closetime" required="required">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  {% for message in old('message') %}
+    <script type="text/javascript">
+      alert(" {{ message }} ")
+    </script>
+  {% endfor %}
+
+  <br><br>
+
+  {% for img in shop %}
+
+    <div class="" style="display: inline-block; border-style: groove; width:270px; height:450px;margin-left:15px;">
+      <img src="../{{ img.shop_image }}" alt="Image is not displaying" width="230px" height="200px" style="padding:10px">
+
+      <div class="" style=" margin-left:50px;">
+        <h3>{{ img.brand_name }}</h3>
+        <h4>Category:</h4>
+        <p>{{ img.category }}</p>
+        <h4>Shop no:</h4>
+        <p>{{ img.shop_no }}</p>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete_{{img.id}}">
+          Remove</button>
+
+        <div class="modal fade modal-danger" id="delete_{{img.id}}" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-center">Are you sure ?</h4>
+              </div>
+              <div class="modal-body">
+                <p class="text-center">Data would be deleted parmanently.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+                <a href="/deleteshop/{{img.id}}">
+                  <button type="button" class="btn btn-danger">Delete</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><br>
+
+      {#  modal  for delete confirmation #}
+    </div>
+  {% endfor %}
+  <br><br>
+
+{% endblock %}

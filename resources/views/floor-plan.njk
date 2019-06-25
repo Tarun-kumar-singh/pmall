@@ -1,0 +1,59 @@
+{% extends "layout" %}
+{% block content %}
+  <title>Phoenix United Bareilly</title>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("select").change(function () {
+        $(this).find("option:selected").each(function () {
+          if ($(this).attr("value") == "1st") {
+            $("#floorIMG").html('<img src="../images/floor-plan/first-floor.jpg">');
+
+          } else if ($(this).attr("value") == "2nd") {
+            $("#floorIMG").html('<img src="../images/floor-plan/second-floor.jpg">');
+
+          } else if ($(this).attr("value") == "ground") {
+            $("#floorIMG").html('<img src="../images/floor-plan/ground-floor-plan.jpg">');
+
+          } else if ($(this).attr("value") == "LGF") {
+            $("#floorIMG").html('<img src="../images/floor-plan/LGF.jpg">');
+          }
+        });
+      }).change();
+    });
+  </script>
+
+  <!-- banner -->
+  <section class="shopbanner"><img src="../images/floor-plan-banner.jpg" class="scale">
+    <div class="banner-dwnarrow scroll-link"><img src="../images/arrowdown1.png" class="scale"></div>
+  </section>
+  <section class="shopbanner-mobile-banner"><img src="../images/floor-plan-mobile.jpg" class="scale"></section>
+  <!--banner-->
+  <section class="shopmidd-wrap" id="middbody">
+    <div class="bredcrum">
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        &raquo;
+        <li>Floor Plan</li>
+      </ul>
+    </div>
+    <h1>Floor Plan</h1>
+    <div class="mapBox">
+      <div class="searchBox">
+        <select class="filterbox_select" style="height:45px" id="ddlCategory" name="ddlCategory">
+
+          <option value="ground" selected="selected">Ground Floor Plan</option>
+          <option value="LGF">LGF</option>
+          <option value="1st">First Floor</option>
+          <option value="2nd">Second Floor</option>
+        </select>
+        <div class="clr"></div>
+      </div><br><br>
+      <div class="mapBox" id="floorIMG" style="border: #c28a2e solid 1px">
+        <img style="border: 10px solid transparent;" src="../images/floor-plan/ground-floor-plan.jpg">
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

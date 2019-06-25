@@ -1,0 +1,133 @@
+{% extends 'admin.layout' %}
+
+{% block content %}
+  <title>Gallery</title>
+  <br><br>
+  <h2>
+    Create gallery</h2>
+
+  <form action="/galleryimage" method="post" style="margin-left:100px" enctype="multipart/form-data">
+    <h3>Event type</h3>
+
+    <input type="radio" name="eventtype" id="tab1btn" value="">
+    Happens once
+    <div class="" style="padding-left:15px;display:inline;">
+      <input type="radio" name="eventtype" id="tab2btn" value="" style="">Recurring
+    </div>
+
+  </form>
+  <br>
+  <div id="tab1" class="" style="display:none">
+
+    <form action="/happensonce" id="Happensonce" name="Happensonce" style="margin-left:100px" method="post" enctype="multipart/form-data">
+      <h2>Happens once event</h2><br><br>
+      <div class="form-group">
+        <label for="">Start Date</label>
+        <input type="date" class="form-control" name="startdate" style="width:300px;" placeholder="start date">
+      </div>
+
+      <div class="form-group">
+        <label for="">End Date</label>
+        <input type="date" class="form-control" name="enddate" style="width:300px;" placeholder="end date">
+      </div>
+
+      <div class="form-group">
+        <label for="">Cover Picture</label>
+        <input type="file" class="form-control" name="coverpic" style="width:300px;" required="required">
+      </div>
+
+      <div class="form-group">
+        <label for="">Description</label><br>
+        <textarea name="description" rows="2" cols="45" required="required"></textarea>
+      </div>
+
+      <input type="submit" name="" value="submit" class="btn btn-primary">
+
+    </form>
+
+  </div>
+  <div class="" id="tab2" style="display:none">
+
+    <form action="/recurring" id="recurring" style="margin-left:100px" name="recurring" method="post" enctype="multipart/form-data">
+
+      <h3>Recurring event</h3><br>
+
+      <div class="form-group">
+        <label for="">When does it happen ?</label>
+        <input type="text" class="form-control" name="happening" style="width:300px;" required="required">
+      </div>
+
+      <div class="form-group">
+        <label for="">when did it happen last ?</label>
+        <input type="date" class="form-control" name="lasthappen" style="width:300px;" required="required">
+      </div>
+
+      <div class="form-group">
+        <label for="">Cover pic</label>
+        <input type="file" class="form-control" name="coverpic" style="width:300px;" placeholder="start date" required="required">
+      </div>
+
+      <div class="form-group">
+        <label for="">Description</label><br>
+        <textarea name="description" rows="2" cols="45" required="required"></textarea>
+      </div>
+
+      <input type="submit" name="" value="submit" class="btn btn-primary">
+
+    </form>
+
+  </div>
+
+  {% for message in old('message') %}
+    <script type="text/javascript">
+      alert('{{ message }}')
+    </script>
+  {% endfor %}
+
+  {% for gallery in gallery %}
+    <div class="" style="display: inline-block; padding: 10px; margin-left: 10px;">
+      <a href="/album/{{ gallery.id }}" target="_blank">
+        <img src="../{{ gallery.cover_Pic }}" class="scale" height="200px" width="200px">
+      </a>
+      <br>
+      <b>{{ gallery.description}}</b>
+      <br>
+      <script type="text/javascript">
+        var monthNames = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December"
+        ];
+        var d = new Date('{{ gallery.created_at }}');
+        document.write(`${d.getDate()} ${monthNames[d.getMonth()]} ${d.getFullYear()}`);
+      </script>
+    </div>
+  {% endfor %}
+
+{% endblock %}
+
+{% block js %}
+  <script type="text/javascript">
+    $("#tab1btn").on("click", function () {
+      $("#tab1").css("display", "block")
+      $("#tab2").css("display", "none")
+    });
+  </script>
+
+  <script type="text/javascript">
+    $("#tab2btn").on("click", function () {
+      $("#tab2").css("display", "block")
+      $("#tab1").css("display", "none")
+    });
+  </script>
+
+{% endblock %}

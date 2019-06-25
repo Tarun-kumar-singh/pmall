@@ -1,0 +1,122 @@
+{% extends 'layout' %}
+{% block content %}
+  <title>Events</title>
+
+  <!-- banner -->
+  <section class="shopbanner">
+    <img src="../images/events-banner.jpg" class="scale">
+    <div class="banner-dwnarrow scroll-link"><img src="../images/arrowdown1.png" class="scale"></div>
+  </section>
+  <section class="shopbanner-mobile-banner">
+    <img src="../images/events-banner-mobile.jpg" class="scale">
+  </section>
+  <!--banner-->
+
+  <section class="shopmidd-wrap" id="middbody">
+    <div class="bredcrum">
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        &raquo;
+        <li>Offers</li>
+      </ul>
+    </div>
+    <h1>Events</h1>
+    <div class="bodytext eventstxt-bottommargin">Stay in loop with everything that is going on at your favorite lifestyle destination &mdash; Phoenix United. Be the first one to get exclusive details about the various events, shows and activities. Stay updated, stay ahead!
+    </div>
+  </section>
+
+  {% for evt in events %}
+    <div class="" style="display:inline-block;margin-left:50px;margin-top:50px;padding-top:25px;padding-bottom:25px;">
+
+      <img class="img-rounded" src="{{ evt.image }}" alt="" width="386px" height="309px">
+
+      <p style="color:#77551e;margin-top:10px;">{{ evt.event_name }}</p>
+
+      <div style="display:inline">
+
+        <p style="color:#77551e;margin-top:10px;font-family:sofia-pro;">
+          <script type="text/javascript">
+            var monthNames = [
+              "January",
+              "February",
+              "March",
+              "April",
+              "May",
+              "June",
+              "July",
+              "August",
+              "September",
+              "October",
+              "November",
+              "December"
+            ];
+            var d = {{ evt.start_date.getDate() }};
+            var m = {{ evt.start_date.getMonth() }};
+            var m2 = monthNames[m];
+            var y = {{ evt.start_date.getFullYear() }};
+
+            var d2 = {{ evt.end_date.getDate() }};
+            var m3 = {{ evt.end_date.getMonth() }};
+            var m4 = monthNames[m];
+            var y2 = {{ evt.end_date.getFullYear() }};
+            document.write(`${d}th  \n  - ${d2}th ${m4} ${y2} `);
+          </script>
+        </p>
+
+        {% if evt.has_registration === 1 %}
+          <a
+            href="event_registration/{{ evt.id }}"
+            style=" text-decoration: none;
+                                 color: #fff;
+                                 background:#77551e ;
+                                 border: solid 2px #77551e;
+                                 border-radius: 3px;
+                                  float:right;
+                                  margin-right: 20px;
+                                 ">
+            Register
+          </a>
+        {% endif %}
+
+        {% if evt.form_link | length != 0 %}
+          <a
+            href="{{evt.form_link}}"
+            style=" text-decoration: none;
+                                     color: #fff;
+                                     background:#77551e ;
+                                     border: solid 2px #77551e;
+                                     border-radius: 3px;
+                                      float:right;
+                                      margin-right: 20px;
+                                  "
+            target="_blank">
+            Register
+          </a>
+        {% endif %}
+
+        {% if evt.ticket_link | length != 0 %}
+          <a
+            href="{{evt.ticket_link}}"
+            style=" text-decoration: none;
+                                      color: #fff;
+                                      background:#77551e ;
+                                      border: solid 2px #77551e;
+                                      border-radius: 3px;
+                                       float:right;
+                                       margin-right: 20px;
+                                   "
+            target="_blank">
+            Buy ticket
+          </a>
+        {% endif %}
+
+      </div>
+
+      <a href="/event_details/{{evt.id}}" style="color:#77551e;font-style:italic;" target="_blank">READ MORE</a>
+
+    </div>
+  {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'layout' %}
+
+{% block content %}
+
+  <!-- banner -->
+  <section class="shopbanner"><img src="images/foodbanner.jpg" class="scale">
+    <div class="banner-dwnarrow scroll-link"><img src="images/arrowdown1.png" class="scale"></div>
+  </section>
+  <section class="shopbanner-mobile-banner"><img src="images/food-banner-mobile.jpg" class="scale"></section>
+  <!--banner-->
+
+  <!--midd-->
+  <section class="shopmidd-wrap" id="middbody">
+    <h2>{{ events.event_name }}</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name
+          </th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Description</tr>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for evg in events.event_guests %}
+          <tr>
+            <td>{{ evg.name }}</td>
+            <td>{{ evg.email }}</td>
+            <td>{{ evg.phone }}</td>
+            <td>{{ evg.description }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+  <!--midd-->
+
+{% endblock %}

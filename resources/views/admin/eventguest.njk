@@ -1,0 +1,32 @@
+{% extends 'admin.layout' %}
+{% block content %}
+  <title>Event Guests</title>
+
+  <br><br>
+  <center>
+    <h1>Events</h1>
+  </center>
+  <br><br>
+
+  {% for evt in events %}
+
+    <div class="" style="display: inline-block; margin-left:20px;margin-top:15px;">
+
+      <div class="panel panel-default" style="width:300px">
+        <div class="panel-body">
+
+          <h4>{{ evt.event_name }}</h4>
+          <p>{{ evt.start_date.getDate() }}/{{ evt.start_date.getMonth()+1 }}/{{ evt.start_date.getFullYear() }}</p>
+          <p>{{ evt.event_description }}</p>
+        </div>
+        <a href="/eventguestdetail/{{ evt.id }}" target="_blank">
+          <button type="button" class="btn btn-primary" name="button">Know Guests</button>
+        </a>
+      </div>
+    </div>
+
+  {% endfor %}
+  <br><br><br><br><br><br>
+  <br><br><br>
+
+{% endblock %}

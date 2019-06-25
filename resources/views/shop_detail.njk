@@ -1,0 +1,68 @@
+{% extends 'layout' %}
+{% block content %}
+  <title>Shop details</title>
+  <section class="shopdetail-wrap">
+
+    <aside class="shopdetail-left">
+      <div class="bredcrum">
+        <ul>
+          <li>
+            <a href="../">Home</a>
+          </li>
+          &raquo;
+          <li>
+            <a href="../shop">Shop</a>
+          </li>
+          &raquo;
+          <li>{{ shop.brand_name }}</li>
+        </ul>
+      </div>
+
+      <div class="toplogo-head"><img src="../{{shop.shop_image}}" class="scale"></div>
+      <div class="shopdetail-txt">
+        {{ shop.brand_description}}
+      </div>
+      <div class="clr"></div>
+      <div class="shopdetail-add">
+        <div class="storeinfo">
+          <span>STORE INFORMATION</span></div>
+        <div class="groundfloor">
+          FLOOR NO -
+          {{ shop.floor }}
+          <br>
+          <div style='display:block'>
+            <span>SHOP NO -</span>
+            {{ shop.shop_no }}
+          </div>
+        </div>
+        <div class="tel" style='display:none'>TEL:<br>
+          <span></span>
+        </div>
+        <div class="opening-hour" style='display:block'>OPENING HOURS<br>
+          {{ shop.open_time}}
+          TO
+          {{ shop.close_time }}
+        </div>
+
+        <div class="clr"></div>
+      </div>
+      <div class="clr"></div>
+
+    </aside>
+    {# <aside id="similarbrands" class="shopdetail-right">
+      <div class="similar-brands">
+        <span>similar brands</span></div>
+      <ul id="carousel" class="elastislide-list">
+
+        <li>
+          <a href="gini-and-jony.html">
+            <img src="../images/brands-logos/logo/GininJony.jpg" title="Gini & Jony" alt="Gini & Jony"/>
+          </a>
+        </li>
+
+      </ul>
+    </aside> #}
+    <div class="clr"></div>
+  </section>
+
+{% endblock %}

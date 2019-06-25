@@ -1,0 +1,109 @@
+{% extends 'layout' %}
+
+{% block content %}
+<title>Shopping Centre in Bareilly | Shopping Malls In Bareilly | Shopping Places in Bareill</title>
+  <section class="shopbanner">
+    <img src="../images/shop-banner.jpg" class="scale">
+    <div class="banner-dwnarrow scroll-link">
+      <img src="../images/arrowdown1.png" class="scale">
+    </div>
+  </section>
+
+  <section class="shopmidd-wrap" id="middbody">
+    <div class="bredcrum">
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        &raquo;
+         <li>  Shop</li>
+      </ul>
+    </div>
+    <h1>shop</h1>
+    <div class="shopfiter-head">FILTER BRANDS BY:</div>
+    <div id="UpdatePanel1">
+
+      <div class="filterbox">
+        <select name="ddlCategory" onchange="categoryfilter(this)" id="ddlCategory" class="filterbox_select">
+
+          <option selected="selected" value="all">Select a Category</option>
+          <option value="apparel">Apparel</option>
+          <option value="cafes">Cafes &amp; Restaurant</option>
+          <option value="cosmetics">Cosmetics</option>
+          <option value="electronics">Electronics</option>
+          <option value="entertainment">Entertainment</option>
+          <option value="foodcourt">Food Court</option>
+          <option value="footwear">Footwear, Bags &amp; Accessories</option>
+          <option value="gifts">Gifts</option>
+          <option value="lifestyle">Home &amp; Lifestyle</option>
+          <option value="hypermarket">Hypermarket</option>
+          <option value="fashion">Internantional fashion</option>
+          <option value="kids">Kids &amp; Infant care</option>
+          <option value="lingerie">Lingerie</option>
+          <option value="menfashion">Men Fashion</option>
+          <option value="sportswear">Sports wear</option>
+          <option value="watches">Watches</option>
+          <option value="ethnicwear">Women Ethnic Wear</option>
+
+        </select>
+
+        <select name="ddlFloor" onchange="floorfilter(this)" id="ddlFloor" class="filterbox_select">
+          <option selected="selected" value="allFloor">All Floors</option>
+          <option value="-1">Basement</option>
+          <option value="0">Ground Floor</option>
+          <option value="1">First Floor</option>
+          <option value="2">Second Floor</option>
+          <option value="3">Third Floor</option>
+          <option value="4">Fourth Floor</option>
+          <option value="5">Food Court</option>
+        </select>
+        <div class="clr"></div>
+      </div>
+      <div class="clr"></div>
+    </div>
+
+    <div class="filterimg-wrap">
+      <ul>
+        {% for shop in shop %}
+
+          <li class=" {{ shop.category }} all {{ shop.floor }} allFloor">
+            <a href="/shop_detail/{{ shop.id }}">
+              <div>
+                <img src="{{ shop.shop_image }}" class=" scale" alt="{{shop.brand_description}}">
+              </div>
+            </a>
+          </li>
+
+        {% endfor %}
+      </ul>
+      <span id="lblmsg" style="color:Red;"></span>
+    </div>
+
+  </section>
+
+{% endblock %}
+
+{% block js%}
+
+  <script type="text/javascript">
+    var currentCat = 'all'
+    var currentFloor = 'allFloor'
+    function filter () {
+      $('.all').css('display', 'none')
+      $('.allFloor').css('display', 'none')
+      $(`.${currentCat}.${currentFloor}`).css('display', 'inline-block')
+      if ($(`.${currentCat}.${currentFloor}`).length < 1) {
+        $('#lblmsg').html('No '+ (currentCat.charAt(0).toUpperCase() + currentCat.slice(1)) +' store found on the selected floor.')
+      }
+    }
+    function floorfilter(c) {
+      currentFloor = c.value
+      filter()
+    }
+    function categoryfilter(c) {
+      currentCat = c.value
+      filter()
+    }
+  </script>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'layout' %}
+{% block css %}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+{% endblock %}
+{% block content %}
+  <title>Phoenix United Bareilly</title>
+
+  <!-- banner -->
+  <section class="shopbanner"><img src="../images/offer-banner.jpg" class="scale">
+    <div class="banner-dwnarrow scroll-link"><img src="../images/arrowdown1.png" class="scale"></div>
+  </section>
+  <section class="shopbanner-mobile-banner"><img src="../images/offers-banner-mobile.jpg" class="scale"></section>
+  <!--banner-->
+
+  <section class="shopmidd-wrap" id="middbody">
+    <div class="bredcrum">
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        &raquo;
+        <li>Offers</li>
+      </ul>
+    </div>
+    <h1>offers</h1>
+
+    {% for offer in offers %}
+    <script type="text/javascript">
+
+    </script>
+
+         <div class="col-lg-4" style="display:inline-block;padding-bottom:35px;">
+
+            <div class="offer-blockimg">
+              <img src="../{{offer.image}}" class="" width="386px" height="309px"><br>
+            </div>
+            <div class="text-center" style="color:#fff;padding:10px;background:#77551e;margin-right:110px;width:386px">
+              {{ offer.start_date.getDate() }}/{{ offer.start_date.getMonth()+1 }}/{{offer.start_date.getFullYear() }}
+              To
+              {{ offer.end_date.getDate() }}/{{ offer.end_date.getMonth()+1 }}/{{offer.end_date.getFullYear() }}
+            </div>
+          </div>
+
+     {% endfor %}
+
+    <div class="clr"></div>
+
+  </section>
+
+{% endblock %}

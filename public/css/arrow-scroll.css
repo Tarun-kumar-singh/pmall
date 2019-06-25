@@ -1,0 +1,6 @@
+.custom-select{background:#ccc; width:200px; position: relative; display: block; overflow:hidden;}
+.custom-select select{font-family: sans-serif; color: #000; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; padding:10px; width:100%; -webkit-appearance: none; -moz-appearance: none; appearance: none; overflow: -moz-hidden-unscrollable; background:none; border:none;}
+.custom-select::after{width:13px; height: 7px; background:url(select-arrow1.png) no-repeat; content: " "; position: absolute; top: 42%; right:15px; z-index: 2; display: none; display: block; pointer-events: none;}
+.custom-select option{font-weight:normal; background:#fff;}
+.custom-select select::-ms-expand {display: none;}
+.custom-select select:focus::-ms-value {background: transparent; color:#000}

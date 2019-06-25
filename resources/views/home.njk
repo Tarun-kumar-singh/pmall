@@ -1,0 +1,210 @@
+{% extends 'layout' %}
+{% block content %}
+  <title>Bareilly Shopping Malls | Best Phonix Malls In Bareilly | Hypermarket In Bareilly</title>
+  <!--main wrap-->
+  <div id="main-wrap">
+    <!--header-->
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    <link href="../css/autofilltextbox.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript">
+      (function ($) {
+        $.widget("custom.catcomplete", $.ui.autocomplete, {
+          _renderMenu: function (ul, items) {
+            var self = this,
+              currentCategory = "";
+            $.each(items, function (index, item) {
+              if (item.category != currentCategory) {
+                ul.append("<li class='ui-autocomplete-category'>" + item.category + "</li>");
+                currentCategory = item.category;
+              }
+              self._renderItem(ul, item);
+            });
+          }
+        });
+        $(function () {
+          $("[id$=UCTopband1_txtSearch]").catcomplete({
+            delay: 0,
+            source: function (request, response) {
+              $.ajax({
+                url: '/searchData.aspx/GetSearchData',
+                data: "{ 'prefix': '" + request.term + "'}",
+                dataType: "json",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                  response($.map(data.d, function (item) {
+                    return {
+                      category: item.split(':')[0],
+                      label: item.split(':')[1],
+                      value: item.split(':')[2],
+                      URL: item.split(':')[3]
+                    }
+                  }))
+                },
+                error: function (response) {
+                  alert(response.responseText);
+                },
+                failure: function (response) {
+                  alert(response.responseText);
+                }
+              });
+            },
+            select: function (event, ui) {
+              event.preventDefault();
+              $(this).val(ui.item.label);
+              location.href = 'http://bbb:82/Phoenix-Baraily/' + ui.item.URL;
+            }
+          });
+        });
+      })(jQuery);
+    </script>
+
+    <!--header-->
+    <!-- slider -->
+    <section class="flexslider">
+      <!-- <div class="banner-dwnarrow scroll-link"><img src="../images/arrowdown1.png" class="scale"></div> -->
+      <ul class="slides">
+
+        <li>
+          <div class="banner01">
+            <div class="img"><img src="../images/Pheonix_bareilly_banner3.jpg" alt=""></div>
+          </div>
+        </li>
+        <li>
+          <div class="banner01">
+            <div class="img"><img src="../images/Pheonix_bareilly_banner2-updated.jpg" alt=""></div>
+          </div>
+        </li>
+        <li>
+          <div class="banner01">
+            <div class="img"><img src="../images/shopping-banner.jpg" alt=""></div>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <!--slider-->
+
+    <!-- slider -->
+    <section class="flexslider-mobile">
+      <ul class="slides">
+        <li>
+          <div class="banner01">
+            <div class="img"><img src="../images/banner1-mobile.jpg" alt=""></div>
+          </div>
+        </li>
+        <li>
+          <div class="banner01">
+            <div class="img"><img src="../images/banner3-mobile.jpg" alt=""></div>
+          </div>
+        </li>
+        <li>
+          <div class="banner01">
+            <div class="img"><img src="../images/shopping-banner-mobile.jpg" alt=""></div>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <!--slider-->
+
+    <!--logo scroller-->
+
+    <!-- <section class="shopmidd-wrap" id="middbody"></section>-->
+
+    <section class="logos-band">
+      <ul id="scroller">
+        {% for img in shop %}
+          <li><img src="{{ img.shop_image }}" alt="logo" class="scale"></li>
+        {% endfor %}
+      </ul>
+    </section>
+    <!--logo scroller-->
+    <!--bottom blocks-->
+    <section class="bottom-block">
+      <div class="item item01">
+        <a href="/shop"><img src="../images/block1.jpg" class="scale"></a>
+      </div>
+      <div class="item item01-mobile">
+        <a href="/shop"><img src="../images/block1-mobile.jpg" class="scale"></a>
+      </div>
+
+      <div class="item item02">
+        <a href="/shop"><img src="../images/block2-updated.jpg" class="scale"></a>
+      </div>
+      <div class="item item02-mobile">
+        <a href="/shop"><img src="../images/block2-updated-mobile.jpg" class="scale"></a>
+      </div>
+      <div class="clr"></div>
+    </section>
+    <!--bottom blocks-->
+
+    <!-- arouse block-->
+    <section class="bottom-lrblock">
+      <aside class="rightbox-arouse">
+        <a href="/food"><img src="../images/arouseimg.jpg" class="scale"></a>
+      </aside>
+      <a href="/food">
+        <aside class="leftbox-arouse"><img src="../images/bgarouse.jpg" class="scale">
+          <div class="arousetxt-box">
+            <div class="springtopline">AROUSE YOUR TASTE BUDS</div>
+            <div class="spring-date">AT
+              <span>PHOENIX UNITED</span></div>
+            <div class="knowmore1">
+              <span>WHAT'S COOKING</span></div>
+          </div>
+        </aside>
+      </a>
+      <div class="clr"></div>
+    </section>
+
+    <section class="bottom-lrblock-mobile">
+      <aside class="rightbox-arouse-mobile">
+        <a href="/food"><img src="../images/arouseimg-mobile.jpg" class="scale"></a>
+      </aside>
+      <a href="/food">
+        <aside class="leftbox-arouse-mobile"><img src="../images/bgarouse-mobile.jpg" class="scale">
+          <div class="arousetxt-box-mobile">
+            <div class="springtopline-mobile">AROUSE YOUR TASTE BUDS</div>
+            <div class="spring-date-mobile">AT
+              <span>PHOENIX UNITED</span></div>
+            <div class="knowmore1-mobile">
+              <span>WHAT'S COOKING</span></div>
+          </div>
+        </aside>
+      </a>
+      <div class="clr"></div>
+    </section>
+    <!-- arouse block-->
+
+    <!-- womens block-->
+    <section class="bottom-lrblock">
+      <aside class="leftwomenclub"><img src="../images/womensimg.jpg" class="scale"></aside>
+
+      <aside class="rightwomenclub">
+        <div class="womens-txtbox1">
+          <div class="womens-comingsoon">coming soon!</div>
+          <div class="womens-exclusive">an exclusive club for women!</div>
+        </div>
+
+      </aside>
+      <!--</a>-->
+      <div class="clr"></div>
+    </section>
+
+    <section class="bottom-lrblock-mobile">
+      <aside class="leftwomenclub-mobile"><img src="../images/womensimg-mobile.jpg" class="scale"></aside>
+
+      <aside class="rightwomenclub-mobile">
+        <div class="womens-txtbox1-mobile">
+          <div class="womens-comingsoon-mobile">coming soon!</div>
+          <div class="womens-exclusive-mobile">an exclusive club for women!</div>
+        </div>
+
+      </aside>
+      <!--</a>-->
+      <div class="clr"></div>
+    </section>
+    <!-- womens block-->
+
+  {% endblock %}

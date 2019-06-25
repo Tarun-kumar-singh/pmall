@@ -1,0 +1,83 @@
+{% extends 'admin.layout' %}
+
+{% block content %}
+  <title>create event</title>
+  <form action="/eventfeed" method="post" enctype="multipart/form-data" style="margin-left:100px">
+    <div class="form-group">
+      <label for="">Event Name</label>
+      <input type="text" class="form-control" name="eventname" style="width:300px;" placeholder="Enter event name" required="required">
+    </div>
+    <div class="form-group">
+      <label for="date">Start date</label>
+      <input type="date" class="form-control" name="startdate" style="width:300px;" placeholder="start date of event" required="required">
+    </div>
+    <div class="form-group">
+      <label for="">End date</label>
+      <input type="date" class="form-control" name="enddate" style="width:300px;" placeholder="end date of event" required="required">
+    </div>
+    <div class="form-group" required="required">
+      <label for="">Description</label>
+      <textarea type="text" class="form-control" name="eventdescription" style="width:300px;height:200px" placeholder="description" required="required"></textarea>
+    </div>
+
+    <div class="form-group">
+
+      <label for="">Registration option
+      </label>
+
+      <input type="radio" name="registrationtype" id="tab3btn" value="1" required="required">Default form
+      <input type="radio" name="registrationtype" value="" id="tab1btn" style="">Custom form
+      <input type="radio" name="registrationtype" value="" id="tab2btn" style="">Buy ticket
+
+      <br>
+      <input type="text" style="display:none;width:300px;" id="formlink" name="formlink" value="" placeholder="Form link" required="required">
+      <input type="text" style="display:none;width:300px;" id="ticketlink" name="ticketlink" value="" placeholder="Ticket link" required="required">
+    </div>
+
+    <div class="form-group">
+      <label for="">Upload Image
+      </label>
+      <input type="file" class="form-control-file" id="exampleFormControlFile1" name="eventpic" required="required">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  {% for message in old('message') %}
+    <script type="text/javascript">
+      alert('{{ message }}')
+    </script>
+  {% endfor %}
+
+{% endblock %}
+
+{% block js %}
+  <script type="text/javascript">
+    jQuery(function ($) {
+      var $inputs = $('input[name=registrationtype],input[name=formlink],input[name=ticketlink]');
+      $inputs.on('input', function () {
+        // Set the required property of the other input to false if this input is not empty.
+        $inputs.not(this).prop('required', !$(this).val().length);
+      });
+    });
+  </script>
+
+  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript">
+
+    $("#tab1btn").on("click", function () {
+      $("#formlink").css("display", "block")
+      $("#ticketlink").css("display", "none")
+    });
+
+    $("#tab2btn").on("click", function () {
+      $("#ticketlink").css("display", "block")
+      $("#formlink").css("display", "none")
+    });
+
+    $("#tab3btn").on("click", function () {
+      $("#ticketlink").css("display", "none")
+      $("#formlink").css("display", "none")
+    });
+  </script>
+{% endblock %}

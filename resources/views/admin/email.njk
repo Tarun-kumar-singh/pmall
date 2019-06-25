@@ -1,0 +1,62 @@
+{% extends 'admin.layout' %}
+
+{% block css %}
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
+{% endblock %}
+{% block content %}
+  <title>subscribed Emails</title>
+
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title">{{ events.event_name }}</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <table id="myTable" class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <td>Emails</td>
+                  <td>Date</td>
+                </tr>
+              </thead>
+              {% for emails in emails %}
+                <tbody>
+                  <td>{{ emails.email }}</td>
+                  <td>
+                    <script type="text/javascript">
+                      var d = new Date("{{ emails.created_at }}")
+                      document.write(`${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`)
+                    </script>
+                  </td>
+                </tbody>
+              {% endfor %}
+            </table>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </section>
+
+{% endblock %}
+
+{% block js %}
+
+  <!-- DataTables -->
+  <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#myTable').DataTable({paging: true, searching: true, ordering: true});
+    });
+  </script>
+{% endblock %}

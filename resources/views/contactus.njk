@@ -1,0 +1,330 @@
+{% extends "layout" %}
+{% block content %}
+  <title>Phoenix Mall Bareilly Contact Number</title>
+  <!-- banner -->
+  <section class="shopbanner"><img src="../images/business-query-banner.jpg" class="scale">
+    <div class="banner-dwnarrow scroll-link"><img src="images/arrowdown1.png" class="scale">
+    </div>
+  </section>
+  <section class="shopbanner-mobile-banner"><img src="../images/business-enquiry-banner-mobile.jpg" class="scale">
+  </section>
+  <!--banner-->
+
+  <section class="shopmidd-wrap" id="middbody">
+    <div class="bredcrum">
+      <ul>
+        <li>
+          <a href="index-2.html">Home</a>
+        </li>
+        &raquo;
+        <li>Business Enquiry</li>
+      </ul>
+    </div>
+
+    <div class="business-innerbox">
+      <h1>TALK TO US</h1>
+      <ul class="tabs">
+        <li class="active" id="tab1btn" rel="tab1">GENERAL ENQUIRY</li>
+        <li id="tab2btn" rel="tab2">BUSINESS ENQUIRY</li>
+      </ul>
+      <div class="tab_container">
+        <h3 class="tab_drawer_heading" rel="tab1">GENERAL ENQUIRY</h3>
+
+        <div id="tab1" class="tab_content" style="display: block;">
+          <div class="queryaddress">PHOENIX UNITED MALL,<br>
+            PILIBHIT BYPASS ROAD NEAR MAHANAGAR,<br/>
+            BAREILLY –243122<br>
+            <br>
+            EMAIL -
+            <a href="mailto:customercarebareilly@phoenixunited.in">customercarebareilly@phoenixunited.in</a>
+            EMAIL -
+            <br>
+            Ph.: 8009094201</div>
+
+          <form action="/generalenquiry" method="post">
+
+            <div class="queryline01">
+              <div class="formtxt">NAME</div>
+              <input name="txtGname" type="text" maxlength="50" id="txtGname" class="txtboxstyle txtbxstyle01"/>
+              <div class="clr"></div>
+            </div>
+
+            <div class="queryline01">
+              <div class="formtxt">EMAIL</div>
+              <input name="txtGemail" type="text" maxlength="60" id="txtGemail" class="txtboxstyle txtbxstyle01"/>
+              <div class="clr"></div>
+            </div>
+
+            <div class="queryline01">
+              <div class="formtxt">PHONE</div>
+              <input name="phoneno" type="number" maxlength="60" id="" class="txtboxstyle txtbxstyle01"/>
+              <div class="clr"></div>
+            </div>
+
+            <div class="queryline01">
+              <div class="formtxt">MESSAGE</div>
+              <textarea name="txtGmsg" rows="2" cols="20" id="txtGmsg" class="txtarea"></textarea>
+            </div>
+
+            <input type="submit" name="btnGSumbmit" value="Submit" onclick="return validateFormData2();" id="btnGSumbmit" class="submitquery"/>
+
+          </form>
+
+          <div class="queryaddress_mobile">PHOENIX UNITED MALL,<br>
+            PILIBHIT BYPASS ROAD NEAR MAHANAGAR,<br/>
+            BAREILLY –243122<br>
+            <br>
+            EMAIL -
+            <a href="mailto:customercarelucknow@phoenixunited.in">customercarelucknow@phoenixunited.in</a>
+            <br>
+            Ph.: 8009094201</div>
+        </div>
+        <!-- #tab1 -->
+
+        <h3 class="d_active tab_drawer_heading tab_drawer_bord" rel="tab2">BUSINESS ENQUIRY</h3>
+        <div id="tab2" class="tab_content">
+
+          <form action="/businessenquiry" method="post">
+
+            <div class="queryline01">
+              <div class="formtxt">NAME</div>
+              <label class="dropdown">
+                <select name="ddSalutation" id="ddSalutation" class="dropdown">
+                  <option selected="selected" value="0">Select</option>
+                  <option value="Mr.">Mr.</option>
+                  <option value="Mrs.">Mrs.</option>
+                </select>
+              </label>
+              <input name="txtName" type="text" maxlength="50" id="txtName" class="txtboxstyle"/>
+            </div>
+            <div class="queryline01">
+              <div class="line2-left">
+                <div class="formtxt">PHONE NUMBER</div>
+                <input name="txtPhone" type="text" maxlength="12" id="txtPhone" class="txtboxstyle txtbxstyle01"/>
+              </div>
+              <div class="line2-right">
+                <div class="formtxt">EMAIL</div>
+                <input name="txtEmail" type="text" maxlength="60" id="txtEmail" class="txtboxstyle txtbxstyle01"/>
+              </div>
+              <div class="clr"></div>
+            </div>
+            <div class="queryline01">
+              <div class="line2-left">
+                <div class="formtxt">CITY</div>
+                <input name="txtCity" type="text" maxlength="500" id="txtCity" class="txtboxstyle txtbxstyle01"/>
+              </div>
+              <div class="line2-right">
+                <div class="formtxt">NATURE OF QUERY</div>
+                <label class="dropdown">
+                  <select name="DDLQueryType" id="DDLQueryType" class=" queryselect">
+                    <option selected="selected" value="0">Select Nature of query</option>
+                    <option value="Request a call">Request a call</option>
+                    <option value="Other Query">Other Query</option>
+
+                  </select>
+                </label>
+              </div>
+              <div class="clr"></div>
+            </div>
+            <div class="queryline01">
+              <div class="formtxt">MESSAGE</div>
+              <textarea name="txtComment" rows="2" cols="20" id="txtComment" class="txtarea"></textarea>
+            </div>
+
+            <input type="submit" name="btnSubmit" value="Submit" onclick="return validateFormData();" id="btnSubmit" class="submitquery"/>
+
+          </form>
+
+        </div>
+        <!-- #tab2 -->
+      </div>
+    </div>
+  </section>
+  <!--midd-->
+
+  {% for message in old('message') %}
+    <script type="text/javascript">
+      alert(" {{ message }} ")
+    </script>
+  {% endfor %}
+
+  {% for businessmessage in old('businessmessage') %}
+    <script type="text/javascript">
+      alert(" {{ businessmessage }} ")
+    </script>
+  {% endfor %}
+
+  <script>
+    function validateFormData() {
+      // alert("test");
+
+      if (document.getElementById('ddSalutation').value == "0") {
+        alert("Please Select Salutation !");
+        document.getElementById('ddSalutation').focus();
+        return false;
+      }
+
+      if (document.getElementById('txtName').value == "") {
+        alert("Please Enter Name !");
+        document.getElementById('txtName').focus();
+        return false;
+      }
+
+      if ((isAlpha(document.getElementById('txtName').value)) == false) {
+        alert("Please Enter Alphabetical Characters (A-Z) only !");
+        document.getElementById('txtName').focus();
+        return false;
+      }
+
+      if (document.getElementById('txtPhone').value == "") {
+        alert("Please Enter Your Mobile Number !");
+        document.getElementById('txtPhone').focus();
+        return false;
+      }
+
+      var x = document.getElementById('txtPhone').value;
+
+      if (isNaN(x) || x.indexOf(" ") != -1) {
+        alert("Please Enter a Numeric value (0-9) only !");
+        document.getElementById('txtPhone').focus();
+        return false;
+      }
+      if (x.length < 10 || x.length > 12) {
+        alert("Please enter 10 Digits Contact No.");
+        document.getElementById('txtPhone').focus();
+        return false;
+      }
+
+      if (document.getElementById('txtEmail').value == "") {
+        alert("Please Enter Your Email !");
+        document.getElementById('txtEmail').focus();
+        return false;
+      }
+      if (!isEmailValid(document.getElementById('txtEmail').value)) {
+        alert("Your email seems invalid, please check again!")
+        document.getElementById('txtEmail').focus();
+        return false;
+      }
+
+      if (document.getElementById('txtCity').value == "") {
+        alert("Please Enter Your City !");
+        document.getElementById('txtCity').focus();
+        return false;
+      }
+
+      if (document.getElementById('DDLQueryType').value == "0") {
+        alert("Please Select Query Type !");
+        document.getElementById('DDLQueryType').focus();
+        return false;
+      }
+
+      if (document.getElementById('txtComment').value == "") {
+        alert("Please Enter Your Comment !");
+        document.getElementById('txtComment').focus();
+        return false;
+      }
+
+      if (document.getElementById('txtVerification').value == "") {
+        alert("Please Enter Verification Code !");
+        document.getElementById('txtVerification').focus();
+        return false;
+      }
+
+    }
+
+    function validateFormData2() {
+      // alert("test");
+
+      if (document.getElementById('txtGname').value == "") {
+        alert("Please Enter Name !");
+        document.getElementById('txtGname').focus();
+        return false;
+      }
+
+      if ((isAlpha(document.getElementById('txtGname').value)) == false) {
+        alert("Please Enter Alphabetical Characters (A-Z) only !");
+        document.getElementById('txtGname').focus();
+        return false;
+      }
+
+      if (document.getElementById('txtGemail').value == "") {
+        alert("Please Enter Your Email !");
+        document.getElementById('txtGemail').focus();
+        return false;
+      }
+      if (!isEmailValid(document.getElementById('txtGemail').value)) {
+        alert("Your email seems invalid, please check again!")
+        document.getElementById('txtGemail').focus();
+        return false;
+      }
+
+      if (document.getElementById('txtGmsg').value == "") {
+        alert("Please Enter Your Comment !");
+        document.getElementById('txtGmsg').focus();
+        return false;
+      }
+      if (document.getElementById('txtGverify').value == "") {
+        alert("Please Enter Verification Code !");
+        document.getElementById('txtGverify').focus();
+        return false;
+      }
+
+    }
+
+    function isEmailValid(sEmail) {
+
+      var sRegExpr = "\w+([-.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
+      if (!sEmail.match(/^\w+([-.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/))
+        return false;
+      return true;
+    }
+
+    // returns true if the string only contains characters A-Z, a-z or 0-9
+    function isAlphaNumeric(str) {
+      var re = /[^a-zA-Z0-9,-:;&./_''() ]/g
+      if (re.test(str))
+        return false;
+      return true;
+    }
+
+    // returns true if the string only contains characters A-Z or a-z
+    function isAlpha(str) {
+      var re = /[^a-zA-Z ]/g
+      if (re.test(str))
+        return false;
+      return true;
+    }
+
+    function NumericOnly(evt) {
+
+      var charCode;
+      charCode = (evt.which)
+        ? evt.which
+        : event.keyCode;
+
+      if (charCode >= 48 && charCode <= 57 || charCode == 8) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  </script>
+
+{% endblock %}
+
+{% block js %}
+  <script type="text/javascript">
+    $("#tab2btn").on("click", function () {
+      $("#tab1").css("display", "none")
+      $("#tab2").css("display", "block")
+    });
+  </script>
+
+  <script type="text/javascript">
+    $("#tab1btn").on("click", function () {
+      $("#tab2").css("display", "none")
+      $("#tab1").css("display", "block")
+    });
+  </script>
+
+{% endblock %}

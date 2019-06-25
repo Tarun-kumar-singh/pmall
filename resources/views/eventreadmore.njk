@@ -1,0 +1,39 @@
+{% extends 'layout' %}
+
+{% block content %}
+  <title>Event read more</title>
+
+  <img class="" style="margin-left:30px; margin-top:130px;" src="../{{ event.image }}" alt="" width="386px" height="309px">
+  <br><br>
+  <p style="color:#77551e;margin-left:20px;">{{ event.event_name }}</p>
+  <p style="color:#77551e;margin-left:20px;font-family:sofia-pro;">
+    <script type="text/javascript">
+      var monthNames = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ];
+      var d = {{ event.start_date.getDate() }};
+      var m = {{ event.start_date.getMonth() }};
+      var m2 = monthNames[m];
+      var y = {{ event.start_date.getFullYear() }};
+
+      var d2 = {{ event.end_date.getDate() }};
+      var m3 = {{ event.end_date.getMonth() }};
+      var m4 = monthNames[m];
+      var y2 = {{ event.end_date.getFullYear() }};
+      document.write(`${d}th  \n  - ${d2}th ${m4} ${y2} `);
+    </script>
+  </p>
+  <p style="margin-left:20px;">{{event.event_description}}</p>
+
+{% endblock %}
